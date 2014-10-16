@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'annotate'
 gem 'faker'
 gem 'devise'
+gem 'rails_admin'
+gem 'rails_12factor', group: :production
