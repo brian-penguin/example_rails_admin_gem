@@ -13,8 +13,13 @@ RailsAdmin.config do |config|
 
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
-
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
+  config.authorize_with do |controller|
+    unless current_user.try(:is_admin?)
+      flash[:error] = "You are not an admin"
+      redirect_to root_path
+    end
+  end
 
   config.actions do
     dashboard                     # mandatory
